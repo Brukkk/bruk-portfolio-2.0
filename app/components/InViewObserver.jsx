@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-export const InViewObserver = ({ children, onInView }) => {
+export const InViewObserver = ({ children, onInView, style }) => {
     const targetRef = useRef(null);
   
     useEffect(() => {
@@ -10,7 +10,7 @@ export const InViewObserver = ({ children, onInView }) => {
             onInView(); // Callback when the target is in view
           }
         },
-        { threshold: 0.6 } // Customize the threshold as per your needs
+        { threshold: 0.2 } // Customize the threshold as per your needs
       );
   
       if (targetRef.current) {
@@ -24,6 +24,6 @@ export const InViewObserver = ({ children, onInView }) => {
       };
     }, [onInView]);
   
-    return <section className='h-[1000px] bg-pink-500 opacity-20' ref={targetRef}>{children}</section>;
+    return <section className={style} ref={targetRef}>{children}</section>;
   };
   

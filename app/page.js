@@ -19,15 +19,26 @@ export default function Home() {
   const handleInView = () => {
     console.log("section in view! y:", y)
     // Perform necessary actions when the target element is in view
-    if (y > previousY && !animated) {
+    if (y < 1600 && y > previousY && !animated) {
       console.log("INIT")
       objectToAnimate.current.emitEvent('mouseHover'); 
       setAnimated(true)
-      
+    }
+
+    if (y > 1400 && y < previousY && !animated) {
+      console.log("INIT")
+      objectToAnimate.current.emitEvent('mouseHover'); 
+      setAnimated(true)
     }
     
-    if (y < previousY && animated) {
+    if (y >= 300 && y <=500 && y < previousY && animated) {
       console.log("reverse")
+      objectToAnimate.current.emitEventReverse('mouseHover');
+      setAnimated(false)
+    }
+
+    if (y >= 1600 && y > previousY && animated){
+      console.log("FINAL reverse")
       objectToAnimate.current.emitEventReverse('mouseHover');
       setAnimated(false)
     }
@@ -38,12 +49,12 @@ export default function Home() {
         <div className='fixed top-0 left-0 right-0 bottom-0 w-full min-h-screen'>
           <Spline 
             onLoad={onLoad}
-            scene="https://draft.spline.design/58lgsfFZyD-q3h2B/scene.splinecode" 
+            scene="https://draft.spline.design/fhuYe3GehdKzTNFy/scene.splinecode" 
           />
         </div>
         <div className='absolute  w-full'>
           <section className='h-[1000px] bg-slate-500 opacity-20'>1</section>
-          <InViewObserver  onInView={handleInView}>2</InViewObserver>
+          <InViewObserver style={'h-[1000px] bg-pink-500 opacity-20'}  onInView={handleInView}>2</InViewObserver>
           <section className='h-[1000px] bg-red-500 opacity-20'>3</section>
           <section className='h-[1000px] bg-blue-500 opacity-20'>4</section>
           <section className='h-[1000px] bg-green-500 opacity-20'>5</section>
