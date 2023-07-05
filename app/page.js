@@ -19,26 +19,26 @@ export default function Home() {
   const handleInView = () => {
     console.log("section in view! y:", y)
     // Perform necessary actions when the target element is in view
-    if (y < 1600 && y > previousY && !animated) {
-      console.log("INIT")
+    if (y <= 700 && y > previousY && !animated) { 
+      console.log("Inicio animacion:", y)
       objectToAnimate.current.emitEvent('mouseHover'); 
       setAnimated(true)
     }
 
-    if (y > 1400 && y < previousY && !animated) {
-      console.log("INIT")
-      objectToAnimate.current.emitEvent('mouseHover'); 
-      setAnimated(true)
-    }
-    
-    if (y >= 300 && y <=500 && y < previousY && animated) {
-      console.log("reverse")
+    if (y <= 700 && y < previousY && animated) {
+      console.log("inicio ANTIanimacion:", y)
       objectToAnimate.current.emitEventReverse('mouseHover');
       setAnimated(false)
     }
 
-    if (y >= 1600 && y > previousY && animated){
-      console.log("FINAL reverse")
+    if (y >= 1300 && y < previousY && !animated) { // 
+      console.log("final animacion:", y)
+      objectToAnimate.current.emitEvent('mouseHover'); 
+      setAnimated(true)
+    }
+    
+    if (y >= 1300 && y > previousY && animated){
+      console.log("final ANTIanimacion:", y)
       objectToAnimate.current.emitEventReverse('mouseHover');
       setAnimated(false)
     }
@@ -53,7 +53,9 @@ export default function Home() {
           />
         </div>
         <div className='absolute  w-full'>
-          <section className='h-[1000px] bg-slate-500 opacity-20'>1</section>
+          <section className='h-[1000px] bg-slate-500 bg-opacity-90 '>
+            <h1 className=' text-center text-4xl'>HELLO WORLD</h1>
+          </section>
           <InViewObserver style={'h-[1000px] bg-pink-500 opacity-20'}  onInView={handleInView}>2</InViewObserver>
           <section className='h-[1000px] bg-red-500 opacity-20'>3</section>
           <section className='h-[1000px] bg-blue-500 opacity-20'>4</section>
