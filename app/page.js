@@ -1,6 +1,6 @@
 "use client";
 import { useRef, useState } from 'react';
-import { useWindowScroll, usePrevious, useDebounce  } from "@uidotdev/usehooks";
+import { useWindowScroll, usePrevious  } from "@uidotdev/usehooks";
 import Spline from '@splinetool/react-spline';
 import { InViewObserver } from './components/InViewObserver';
 
@@ -49,18 +49,22 @@ export default function Home() {
         <div className='fixed top-0 left-0 right-0 bottom-0 w-full min-h-screen'>
           <Spline 
             onLoad={onLoad}
-            scene="https://draft.spline.design/fhuYe3GehdKzTNFy/scene.splinecode" 
+            scene="https://prod.spline.design/yO0TZ-4g2Eygslwm/scene.splinecode" 
           />
         </div>
         <div className='absolute  w-full'>
-          <section className='h-[1000px] bg-slate-500 bg-opacity-90 '>
-            <h1 className=' text-center text-4xl'>HELLO WORLD</h1>
+          <section className='h-[1000px] bg-slate-900 bg-opacity-50 p-4 '>
+            <h1 className='text-center text-6xl'>Transforming ideas 
+              <span className='block text-[34px]'>into immersive web experiences</span>
+            </h1>
           </section>
-          <InViewObserver style={'h-[1000px] bg-pink-500 opacity-20'}  onInView={handleInView}>2</InViewObserver>
-          <section className='h-[1000px] bg-red-500 opacity-20'>3</section>
-          <section className='h-[1000px] bg-blue-500 opacity-20'>4</section>
-          <section className='h-[1000px] bg-green-500 opacity-20'>5</section>
-          <section className='h-[1000px] bg-orange-500 opacity-20'>6</section>
+          <InViewObserver style={'h-[1000px] bg-pink-500 bg-opacity-20'}  onInView={handleInView}>
+            <h2></h2>
+          </InViewObserver>
+          <section className='h-[1000px] bg-red-500 bg-opacity-20'>3</section>
+          <section className='h-[1000px] bg-blue-500 bg-opacity-20'>4</section>
+          <section className='h-[1000px] bg-green-500 bg-opacity-20'>5</section>
+          <section className='h-[1000px] bg-orange-500 bg-opacity-20'>6</section>
         </div>
         <aside className='fixed bottom-0 left-0 right-0 flex justify-around'>
           Coordinates {" "}
